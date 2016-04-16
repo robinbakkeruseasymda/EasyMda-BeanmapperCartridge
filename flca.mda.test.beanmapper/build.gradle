@@ -1,0 +1,37 @@
+
+apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+
+archivesBaseName = "easymda.test.model.beanmapper"
+
+sourceSets {
+   main {
+      java {
+         srcDirs = ["src/main/java"]
+      }
+   }
+
+   javadoc {
+      java {
+         srcDirs = ["src/main/java" ]
+      }
+   }
+}
+buildDir = "target"
+
+dependencies {
+	compile "commons-lang:commons-lang:2.6",
+		"org.slf4j:slf4j-api:1.7.6",
+		"junit:junit:4.9",
+		"easymda:flca.mda.common.api:${easymda_version}",
+		"easymda:flca.easymda.generator:${easymda_version}",
+		"easymda:easymda.cartridge.beanmapper:${easymda_version}",
+		"eclipse-plugin:org.eclipse.jdt.core:4.0",
+		"eclipse-plugin:org.eclipse.core.resources:4.0",
+		"eclipse-plugin:org.eclipse.equinox.common:4.0",
+		"eclipse-plugin:org.eclipse.core.jobs:4.0"
+}	
+
+task s(dependsOn: [standard] ) << {
+}
+
+
