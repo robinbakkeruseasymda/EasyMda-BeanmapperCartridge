@@ -2,6 +2,9 @@
 
 package nl.apg.model.bar;
  
+import flca.xlsx.util.Xlsx;
+import flca.xlsx.util.XlsxDataWriter;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +18,18 @@ import org.junit.Test;
 
 
 public class TestBasTOMapper extends AbstractTestBeanMapper {
-	
+
+	private static final byte SHEET1 = 0;
+
+	/*
+	* Run this test once than move the generated excel files to src/test/resource and fill with testdata
+	*/
+	@Test 
+	public void makeExcelTemplates() {
+		XlsxDataWriter.writeXlsxFile("/tmp/Bas.xlsx", );
+		XlsxDataWriter.writeXlsxFile("/tmp/BasTO.xlsx", );
+	}
+		
 	@Override
 	protected Set<String> ignoreMapToEntityProperties() {
 		Set<String> result = new HashSet<>();

@@ -59,11 +59,11 @@ public class BarTOMapper {
 	}
  
 	private static void mapFromOnbekend(final Bar entity, final BarTO result) {
-		//TODO onbekende property entity.getOnbekend()
+		//TODO unknown property entity.getOnbekend()
 	}
  
 	private static void mapFromTypeLong(final Bar entity, final BarTO result) {
-		//TODO property entity.getTypeLong() heeft een ander datatype (long ipv Long)
+		//TODO property entity.getTypeLong() has a different datatype (long ipv Long)
 	}
  
 	private static void mapFromType(final Bar entity, final BarTO result) {
@@ -71,7 +71,7 @@ public class BarTOMapper {
 	}
  
 	private static void mapFromFoo(final Bar entity, final BarTO result) {
-		// ivm recursiviteit niet verder gemapped
+		// here not mapped because it may give recursive loop
 		// result.setFoo(FooTOMapper.mapFromEntity(entity.getFoo()));
 	}
  
@@ -122,7 +122,7 @@ public class BarTOMapper {
 	}
  
 	private static void mapToFoo(final BarTO entity, final Bar result) {
-		// ivm recursiviteit niet verder gemapped
+		// here not mapped because it may give recursive loop
 		// result.setFoo(FooTOMapper.mapToEntity(entity.getFoo()));			
 	}
  

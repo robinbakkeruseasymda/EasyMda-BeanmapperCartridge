@@ -19,9 +19,29 @@ class="TestTOMapper" %>
 <% impu.addImport("java.util.HashSet"); %>
 <% impu.addImport("java.util.Set"); %>
 <% impu.addImport("nl.apg.util.mapper.AbstractTestBeanMapper"); %>
+<% impu.addImport("flca.xlsx.util.XlsxDataWriter");  %>
+<% impu.addImport("flca.xlsx.util.Xlsx");  %>
 
 public class <%=classname%> extends AbstractTestBeanMapper {
-	
+
+	private static final byte SHEET1 = 0;
+
+	/*
+	* Run this test once than move the generated excel files to src/test/resource and fill with testdata
+	*/
+	@Test 
+	public void makeExcelTemplates() {
+<% String entitynames = "";  String tonames = ""; %>
+<% for (NestedObject no : tu.getNestedObjects(entityClass).getNestedObjects()) { %>
+<%	entitynames += no.getNestedType().getSimpleName() + ","; %>
+<% } %>
+<% for (NestedObject no : tu.getNestedObjects(cc).getNestedObjects()) { %>
+<%	tonames += no.getNestedType().getSimpleName() + ","; %>
+<% } %>
+		XlsxDataWriter.writeXlsxFile("/tmp/<%=entityClassname%>.xlsx", <%=entitynames%>);
+		XlsxDataWriter.writeXlsxFile("/tmp/<%=toClassname%>.xlsx", <%=tonames%>);
+	}
+		
 	@Override
 	protected Set<String> ignoreMapToEntityProperties() {
 		Set<String> result = new HashSet<>();

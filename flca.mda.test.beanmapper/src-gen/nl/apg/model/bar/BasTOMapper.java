@@ -58,7 +58,7 @@ public class BasTOMapper {
 	}
  
 	private static void mapFromOnbekend(final Bas entity, final BasTO result) {
-		//TODO onbekende property entity.getOnbekend()
+		//TODO unknown property entity.getOnbekend()
 	}
  
 	private static void mapFromType(final Bas entity, final BasTO result) {
@@ -66,7 +66,7 @@ public class BasTOMapper {
 	}
  
 	private static void mapFromFoo(final Bas entity, final BasTO result) {
-		// ivm recursiviteit niet verder gemapped
+		// here not mapped because it may give recursive loop
 		// result.setFoo(FooTOMapper.mapFromEntity(entity.getFoo()));
 	}
  
@@ -113,7 +113,7 @@ public class BasTOMapper {
 	}
  
 	private static void mapToFoo(final BasTO entity, final Bas result) {
-		// ivm recursiviteit niet verder gemapped
+		// here not mapped because it may give recursive loop
 		// result.setFoo(FooTOMapper.mapToEntity(entity.getFoo()));			
 	}
  

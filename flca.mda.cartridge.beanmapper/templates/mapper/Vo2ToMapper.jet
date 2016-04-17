@@ -1,7 +1,7 @@
 <%@ jet package="cartridge" 
 imports="java.util.* flca.mda.api.util.* mda.template.* mda.template.type.* flca.mda.codegen.data.* "
 package="mapper"
-class="TOMapper" %>
+class="Vo2ToMapper" %>
 <%@ include file="../include/java-class-init.jetinc" %>
 <%@ include file="../include/java-class-start.jetinc" %>
 <% Class toClass = cc; %>
@@ -75,12 +75,10 @@ public class <%=classname%> {
 <%      Class nestedMapperClass = fw.type(); String nestedMapper = fw.typeName() + "Mapper"; %>
 <%      impu.addImport(nestedMapperClass.getName() + "Mapper"); %>
 <%               if (!tu.isAlreadyMapped(otherFw.genericType())) { // if isAlr %>
-		if (entity.get<%=capname%>() != null) {
-			result.set<%=capname%>(<%=nestedMapper%>.mapFromEntity(entity.get<%=capname%>()));
+		result.set<%=capname%>(<%=nestedMapper%>.mapFromEntity(entity.get<%=capname%>()));
 <%                   String setter = tu.getMethodName(otherFw.genericType(), void.class, new Class[] {entityClass}); %>
 <%                   if (setter != null) { %>
-			result.get<%=capname%>().<%=setter%>(result);
-		}
+		result.get<%=capname%>().<%=setter%>(result);
 <%                   } %>
 <%               } else { %>
 		// here not mapped because it may give recursive loop
@@ -92,7 +90,7 @@ public class <%=classname%> {
 <%         } // ifC %>
 <%      } //ifB %>
 <%    } else { // ifA %>
-		//TODO unknown property entity.get<%=capname%>()
+		//TODO onbekende property entity.get<%=capname%>()
 <%    } // ifA %>
 	}
  
@@ -155,12 +153,11 @@ public class <%=classname%> {
 <%      Class nestedMapperClass = fw.type(); String nestedMapper = fw.typeName() + "TOMapper"; %>
 <%      impu.addImport(nestedMapperClass.getName() + "TOMapper"); %>
 <%               if (!tu.isAlreadyMapped(otherFw.genericType())) { // if isAlr %>
+
 <%                   String setter = tu.getMethodName(otherFw.genericType(), void.class, new Class[] {toClass}); %>
 <%                   if (setter != null) { %>
-		if (entity.get<%=capname%>() != null) {
-			result.set<%=capname%>(<%=nestedMapper%>.mapToEntity(entity.get<%=capname%>()));
-			result.get<%=capname%>().<%=setter%>(result);
-		}
+		result.set<%=capname%>(<%=nestedMapper%>.mapToEntity(entity.get<%=capname%>()));
+		result.get<%=capname%>().<%=setter%>(result);
 <%                   } else { %>
 		result.set<%=capname%>(<%=nestedMapper%>.mapToEntity(entity.get<%=capname%>()));
 <%                   } %>
@@ -173,7 +170,7 @@ public class <%=classname%> {
 <%         } // ifC %>
 <%      } //ifB %>
 <%    } else { // ifA %>
-		//TODO unknown property entity.get<%=capname%>()
+		//TODO onbekende property entity.get<%=capname%>()
 <%    } // ifA %>
 	}
  

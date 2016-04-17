@@ -56,7 +56,7 @@ public class TOMapper
   protected final String TEXT_36 = "().add(";
   protected final String TEXT_37 = ".mapFromEntity(item));";
   protected final String TEXT_38 = NL + "\t\t\t}" + NL + "\t\t}";
-  protected final String TEXT_39 = NL + "\t\t// ivm recursiviteit niet verder gemapped";
+  protected final String TEXT_39 = NL + "\t\t// here not mapped because it may give recursive loop";
   protected final String TEXT_40 = NL + "\t\tif (entity.get";
   protected final String TEXT_41 = "() != null) {" + NL + "\t\t\tresult.set";
   protected final String TEXT_42 = "(new ";
@@ -64,86 +64,87 @@ public class TOMapper
   protected final String TEXT_44 = " item : entity.get";
   protected final String TEXT_45 = "()) {" + NL + "\t\t\t\tresult.get";
   protected final String TEXT_46 = "().add(item);" + NL + "\t\t\t}" + NL + "\t\t}";
-  protected final String TEXT_47 = NL + "\t\tresult.set";
-  protected final String TEXT_48 = "(";
-  protected final String TEXT_49 = ".mapFromEntity(entity.get";
-  protected final String TEXT_50 = "()));";
-  protected final String TEXT_51 = NL + "\t\tresult.get";
-  protected final String TEXT_52 = "().";
-  protected final String TEXT_53 = "(result);";
-  protected final String TEXT_54 = NL + "\t\t// ivm recursiviteit niet verder gemapped" + NL + "\t\t// result.set";
-  protected final String TEXT_55 = "(";
-  protected final String TEXT_56 = ".mapFromEntity(entity.get";
-  protected final String TEXT_57 = "()));";
-  protected final String TEXT_58 = NL + "\t\t//TODO property entity.get";
-  protected final String TEXT_59 = "() heeft een ander datatype (";
-  protected final String TEXT_60 = " ipv ";
-  protected final String TEXT_61 = ")";
-  protected final String TEXT_62 = NL + "\t\t//TODO onbekende property entity.get";
-  protected final String TEXT_63 = "()";
-  protected final String TEXT_64 = NL + "\t}" + NL + " ";
-  protected final String TEXT_65 = NL + " " + NL + "\t/**" + NL + "\t* map from To to entity" + NL + "\t* @param sourceTO, ";
-  protected final String TEXT_66 = NL + "\t* @result ";
-  protected final String TEXT_67 = " " + NL + "\t*/" + NL + "\tpublic static ";
-  protected final String TEXT_68 = " mapToEntity(";
-  protected final String TEXT_69 = " sourceTO) {" + NL + "\t\t";
-  protected final String TEXT_70 = " result = new ";
-  protected final String TEXT_71 = "();";
-  protected final String TEXT_72 = NL + "\t\tmapTo";
-  protected final String TEXT_73 = "(sourceTO, result);";
-  protected final String TEXT_74 = "\t\t" + NL + "\t\treturn result;" + NL + "\t}" + NL + " ";
-  protected final String TEXT_75 = NL + "\tprivate static void mapTo";
-  protected final String TEXT_76 = "(final ";
-  protected final String TEXT_77 = " entity, final ";
-  protected final String TEXT_78 = " result) {";
-  protected final String TEXT_79 = NL + "\t\tresult.set";
-  protected final String TEXT_80 = "(entity.get";
-  protected final String TEXT_81 = "());";
-  protected final String TEXT_82 = NL + " \t\tif (entity.get";
-  protected final String TEXT_83 = "() != null) { " + NL + "\t\t\tresult.set";
-  protected final String TEXT_84 = "(new ";
-  protected final String TEXT_85 = "()); " + NL + "\t\t\tfor (";
-  protected final String TEXT_86 = " item : entity.get";
-  protected final String TEXT_87 = "()) {";
-  protected final String TEXT_88 = NL + "\t\t\t\t";
-  protected final String TEXT_89 = " elem = ";
-  protected final String TEXT_90 = ".mapToEntity(item);" + NL + "\t\t\t\telem.";
-  protected final String TEXT_91 = "(result);" + NL + "\t\t\t\tresult.get";
-  protected final String TEXT_92 = "().add(elem);";
-  protected final String TEXT_93 = NL + "\t\t\t\tresult.get";
-  protected final String TEXT_94 = "().add(";
-  protected final String TEXT_95 = ".mapToEntity(item));";
-  protected final String TEXT_96 = NL + "\t\t\t}" + NL + "\t\t}";
-  protected final String TEXT_97 = NL + "\t\t// ivm recursiviteit niet verder gemapped";
-  protected final String TEXT_98 = "\t\t";
-  protected final String TEXT_99 = NL + "\t\tif (entity.get";
-  protected final String TEXT_100 = "() != null) {" + NL + "\t\t\tresult.set";
-  protected final String TEXT_101 = "(new ";
-  protected final String TEXT_102 = "()); " + NL + "\t\t\tfor (";
-  protected final String TEXT_103 = " item : entity.get";
-  protected final String TEXT_104 = "()) {" + NL + "\t\t\t\tresult.get";
-  protected final String TEXT_105 = "().add(item);" + NL + "\t\t\t}" + NL + "\t\t}";
-  protected final String TEXT_106 = NL;
-  protected final String TEXT_107 = NL + "\t\tresult.set";
-  protected final String TEXT_108 = "(";
-  protected final String TEXT_109 = ".mapToEntity(entity.get";
-  protected final String TEXT_110 = "()));" + NL + "\t\tresult.get";
-  protected final String TEXT_111 = "().";
-  protected final String TEXT_112 = "(result);";
-  protected final String TEXT_113 = NL + "\t\tresult.set";
-  protected final String TEXT_114 = "(";
-  protected final String TEXT_115 = ".mapToEntity(entity.get";
-  protected final String TEXT_116 = "()));";
-  protected final String TEXT_117 = NL + "\t\t// ivm recursiviteit niet verder gemapped" + NL + "\t\t// result.set";
-  protected final String TEXT_118 = "(";
-  protected final String TEXT_119 = ".mapToEntity(entity.get";
-  protected final String TEXT_120 = "()));";
-  protected final String TEXT_121 = "\t\t\t";
-  protected final String TEXT_122 = NL + "\t\t//TODO onbekende property entity.get";
-  protected final String TEXT_123 = "()";
-  protected final String TEXT_124 = NL + "\t}" + NL + " ";
-  protected final String TEXT_125 = NL + " }" + NL;
-  protected final String TEXT_126 = NL;
+  protected final String TEXT_47 = NL + "\t\tif (entity.get";
+  protected final String TEXT_48 = "() != null) {" + NL + "\t\t\tresult.set";
+  protected final String TEXT_49 = "(";
+  protected final String TEXT_50 = ".mapFromEntity(entity.get";
+  protected final String TEXT_51 = "()));";
+  protected final String TEXT_52 = NL + "\t\t\tresult.get";
+  protected final String TEXT_53 = "().";
+  protected final String TEXT_54 = "(result);" + NL + "\t\t}";
+  protected final String TEXT_55 = NL + "\t\t// here not mapped because it may give recursive loop" + NL + "\t\t// result.set";
+  protected final String TEXT_56 = "(";
+  protected final String TEXT_57 = ".mapFromEntity(entity.get";
+  protected final String TEXT_58 = "()));";
+  protected final String TEXT_59 = NL + "\t\t//TODO property entity.get";
+  protected final String TEXT_60 = "() has a different datatype (";
+  protected final String TEXT_61 = " ipv ";
+  protected final String TEXT_62 = ")";
+  protected final String TEXT_63 = NL + "\t\t//TODO unknown property entity.get";
+  protected final String TEXT_64 = "()";
+  protected final String TEXT_65 = NL + "\t}" + NL + " ";
+  protected final String TEXT_66 = NL + " " + NL + "\t/**" + NL + "\t* map from To to entity" + NL + "\t* @param sourceTO, ";
+  protected final String TEXT_67 = NL + "\t* @result ";
+  protected final String TEXT_68 = " " + NL + "\t*/" + NL + "\tpublic static ";
+  protected final String TEXT_69 = " mapToEntity(";
+  protected final String TEXT_70 = " sourceTO) {" + NL + "\t\t";
+  protected final String TEXT_71 = " result = new ";
+  protected final String TEXT_72 = "();";
+  protected final String TEXT_73 = NL + "\t\tmapTo";
+  protected final String TEXT_74 = "(sourceTO, result);";
+  protected final String TEXT_75 = "\t\t" + NL + "\t\treturn result;" + NL + "\t}" + NL + " ";
+  protected final String TEXT_76 = NL + "\tprivate static void mapTo";
+  protected final String TEXT_77 = "(final ";
+  protected final String TEXT_78 = " entity, final ";
+  protected final String TEXT_79 = " result) {";
+  protected final String TEXT_80 = NL + "\t\tresult.set";
+  protected final String TEXT_81 = "(entity.get";
+  protected final String TEXT_82 = "());";
+  protected final String TEXT_83 = NL + " \t\tif (entity.get";
+  protected final String TEXT_84 = "() != null) { " + NL + "\t\t\tresult.set";
+  protected final String TEXT_85 = "(new ";
+  protected final String TEXT_86 = "()); " + NL + "\t\t\tfor (";
+  protected final String TEXT_87 = " item : entity.get";
+  protected final String TEXT_88 = "()) {";
+  protected final String TEXT_89 = NL + "\t\t\t\t";
+  protected final String TEXT_90 = " elem = ";
+  protected final String TEXT_91 = ".mapToEntity(item);" + NL + "\t\t\t\telem.";
+  protected final String TEXT_92 = "(result);" + NL + "\t\t\t\tresult.get";
+  protected final String TEXT_93 = "().add(elem);";
+  protected final String TEXT_94 = NL + "\t\t\t\tresult.get";
+  protected final String TEXT_95 = "().add(";
+  protected final String TEXT_96 = ".mapToEntity(item));";
+  protected final String TEXT_97 = NL + "\t\t\t}" + NL + "\t\t}";
+  protected final String TEXT_98 = NL + "\t\t// here not mapped because it may give recursive loop";
+  protected final String TEXT_99 = "\t\t";
+  protected final String TEXT_100 = NL + "\t\tif (entity.get";
+  protected final String TEXT_101 = "() != null) {" + NL + "\t\t\tresult.set";
+  protected final String TEXT_102 = "(new ";
+  protected final String TEXT_103 = "()); " + NL + "\t\t\tfor (";
+  protected final String TEXT_104 = " item : entity.get";
+  protected final String TEXT_105 = "()) {" + NL + "\t\t\t\tresult.get";
+  protected final String TEXT_106 = "().add(item);" + NL + "\t\t\t}" + NL + "\t\t}";
+  protected final String TEXT_107 = NL + "\t\tif (entity.get";
+  protected final String TEXT_108 = "() != null) {" + NL + "\t\t\tresult.set";
+  protected final String TEXT_109 = "(";
+  protected final String TEXT_110 = ".mapToEntity(entity.get";
+  protected final String TEXT_111 = "()));" + NL + "\t\t\tresult.get";
+  protected final String TEXT_112 = "().";
+  protected final String TEXT_113 = "(result);" + NL + "\t\t}";
+  protected final String TEXT_114 = NL + "\t\tresult.set";
+  protected final String TEXT_115 = "(";
+  protected final String TEXT_116 = ".mapToEntity(entity.get";
+  protected final String TEXT_117 = "()));";
+  protected final String TEXT_118 = NL + "\t\t// here not mapped because it may give recursive loop" + NL + "\t\t// result.set";
+  protected final String TEXT_119 = "(";
+  protected final String TEXT_120 = ".mapToEntity(entity.get";
+  protected final String TEXT_121 = "()));";
+  protected final String TEXT_122 = "\t\t\t";
+  protected final String TEXT_123 = NL + "\t\t//TODO unknown property entity.get";
+  protected final String TEXT_124 = "()";
+  protected final String TEXT_125 = NL + "\t}" + NL + " ";
+  protected final String TEXT_126 = NL + " }" + NL;
+  protected final String TEXT_127 = NL;
 
   public String generate(Object argument)
   {
@@ -298,190 +299,193 @@ public class TOMapper
     stringBuffer.append(TEXT_47);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_48);
-    stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_49);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_49);
+    stringBuffer.append(nestedMapper);
     stringBuffer.append(TEXT_50);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_51);
                        String setter = tu.getMethodName(otherFw.genericType(), void.class, new Class[] {entityClass}); 
                        if (setter != null) { 
-    stringBuffer.append(TEXT_51);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_52);
-    stringBuffer.append(setter);
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_53);
+    stringBuffer.append(setter);
+    stringBuffer.append(TEXT_54);
                        } 
                    } else { 
-    stringBuffer.append(TEXT_54);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_55);
-    stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_56);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_56);
+    stringBuffer.append(nestedMapper);
     stringBuffer.append(TEXT_57);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_58);
                    } 
                 } else { 
-    stringBuffer.append(TEXT_58);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_59);
-    stringBuffer.append(otherFw.typeName());
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_60);
-    stringBuffer.append(fw.typeName());
+    stringBuffer.append(otherFw.typeName());
     stringBuffer.append(TEXT_61);
+    stringBuffer.append(fw.typeName());
+    stringBuffer.append(TEXT_62);
                 } // ifE 
              } // ifC 
           } //ifB 
         } else { // ifA 
-    stringBuffer.append(TEXT_62);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_63);
-        } // ifA 
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_64);
-     } //for loop 
+        } // ifA 
     stringBuffer.append(TEXT_65);
-    stringBuffer.append(toClassname);
+     } //for loop 
     stringBuffer.append(TEXT_66);
-    stringBuffer.append(entityClassname);
+    stringBuffer.append(toClassname);
     stringBuffer.append(TEXT_67);
     stringBuffer.append(entityClassname);
     stringBuffer.append(TEXT_68);
-    stringBuffer.append(toClassname);
-    stringBuffer.append(TEXT_69);
     stringBuffer.append(entityClassname);
+    stringBuffer.append(TEXT_69);
+    stringBuffer.append(toClassname);
     stringBuffer.append(TEXT_70);
     stringBuffer.append(entityClassname);
     stringBuffer.append(TEXT_71);
+    stringBuffer.append(entityClassname);
+    stringBuffer.append(TEXT_72);
      for (Fw fw : tu.getFields(entityClass, EXC, FwSelectType.ID)) { 
      String fldname = fw.name(); String capname = nu.capName(fldname);  
-    stringBuffer.append(TEXT_72);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_73);
-     } //for loop 
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_74);
+     } //for loop 
+    stringBuffer.append(TEXT_75);
      for (Fw fw : entityFws) { 
        String fldname = fw.name(); String capname = nu.capName(fldname); String typ = fw.genericTypeName(); String concreteType = fw.concreteType(); 
-    stringBuffer.append(TEXT_75);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_76);
-    stringBuffer.append(toClassname);
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_77);
-    stringBuffer.append(entityClassname);
+    stringBuffer.append(toClassname);
     stringBuffer.append(TEXT_78);
+    stringBuffer.append(entityClassname);
+    stringBuffer.append(TEXT_79);
        if (tu.hasOtherProperty(fw, toFws)) { // ifA 
           Fw otherFw = tu.getOtherFw(fw, toFws); 
           String otherTyp = otherFw.genericTypeName(); 
           if (tu.isSameType(fw, otherFw)) { // ifB 
-    stringBuffer.append(TEXT_79);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_80);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_81);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_82);
           } else { // ifB 
              if (fw.isCollection()) { // ifC 
                 if (tu.belongsTo(toClass, fw)) { // ifD 
           Class nestedMapperClass = fw.genericType(); String nestedMapper = fw.genericTypeName() + "TOMapper"; 
           impu.addImport(nestedMapperClass.getName() + "TOMapper"); 
                    if (!tu.isAlreadyMapped(otherFw.genericType())) { // if isAlr 
-    stringBuffer.append(TEXT_82);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_83);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_84);
-    stringBuffer.append(concreteType);
-    stringBuffer.append(TEXT_85);
-    stringBuffer.append(otherTyp);
-    stringBuffer.append(TEXT_86);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_85);
+    stringBuffer.append(concreteType);
+    stringBuffer.append(TEXT_86);
+    stringBuffer.append(otherTyp);
     stringBuffer.append(TEXT_87);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_88);
                        String setter = tu.getMethodName(otherFw.genericType(), void.class, new Class[] {toClass}); 
                        if (setter != null) { 
-    stringBuffer.append(TEXT_88);
-    stringBuffer.append(fw.genericTypeName());
     stringBuffer.append(TEXT_89);
-    stringBuffer.append(nestedMapper);
+    stringBuffer.append(fw.genericTypeName());
     stringBuffer.append(TEXT_90);
-    stringBuffer.append(setter);
-    stringBuffer.append(TEXT_91);
-    stringBuffer.append(capname);
-    stringBuffer.append(TEXT_92);
-                       } else { 
-    stringBuffer.append(TEXT_93);
-    stringBuffer.append(capname);
-    stringBuffer.append(TEXT_94);
     stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_95);
-                       } 
-    stringBuffer.append(TEXT_96);
-                   } else { // else isAlr 
-    stringBuffer.append(TEXT_97);
-                   } 
-    stringBuffer.append(TEXT_98);
-                } else { 
-    stringBuffer.append(TEXT_99);
+    stringBuffer.append(TEXT_91);
+    stringBuffer.append(setter);
+    stringBuffer.append(TEXT_92);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_93);
+                       } else { 
+    stringBuffer.append(TEXT_94);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_95);
+    stringBuffer.append(nestedMapper);
+    stringBuffer.append(TEXT_96);
+                       } 
+    stringBuffer.append(TEXT_97);
+                   } else { // else isAlr 
+    stringBuffer.append(TEXT_98);
+                   } 
+    stringBuffer.append(TEXT_99);
+                } else { 
     stringBuffer.append(TEXT_100);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_101);
-    stringBuffer.append(concreteType);
-    stringBuffer.append(TEXT_102);
-    stringBuffer.append(typ);
-    stringBuffer.append(TEXT_103);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_102);
+    stringBuffer.append(concreteType);
+    stringBuffer.append(TEXT_103);
+    stringBuffer.append(typ);
     stringBuffer.append(TEXT_104);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_105);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_106);
                 } // ifD 
              } else { 
                 if (tu.belongsTo(toClass, fw)) { // ifE 
           Class nestedMapperClass = fw.type(); String nestedMapper = fw.typeName() + "TOMapper"; 
           impu.addImport(nestedMapperClass.getName() + "TOMapper"); 
                    if (!tu.isAlreadyMapped(otherFw.genericType())) { // if isAlr 
-    stringBuffer.append(TEXT_106);
                        String setter = tu.getMethodName(otherFw.genericType(), void.class, new Class[] {toClass}); 
                        if (setter != null) { 
     stringBuffer.append(TEXT_107);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_108);
-    stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_109);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_109);
+    stringBuffer.append(nestedMapper);
     stringBuffer.append(TEXT_110);
     stringBuffer.append(capname);
     stringBuffer.append(TEXT_111);
-    stringBuffer.append(setter);
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_112);
-                       } else { 
+    stringBuffer.append(setter);
     stringBuffer.append(TEXT_113);
-    stringBuffer.append(capname);
+                       } else { 
     stringBuffer.append(TEXT_114);
-    stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_115);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_115);
+    stringBuffer.append(nestedMapper);
     stringBuffer.append(TEXT_116);
+    stringBuffer.append(capname);
+    stringBuffer.append(TEXT_117);
                        } 
                    } else { // else isAlr 
-    stringBuffer.append(TEXT_117);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_118);
-    stringBuffer.append(nestedMapper);
-    stringBuffer.append(TEXT_119);
     stringBuffer.append(capname);
+    stringBuffer.append(TEXT_119);
+    stringBuffer.append(nestedMapper);
     stringBuffer.append(TEXT_120);
-                   } 
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_121);
+                   } 
+    stringBuffer.append(TEXT_122);
                 } else { 
                 } // ifE 
              } // ifC 
           } //ifB 
         } else { // ifA 
-    stringBuffer.append(TEXT_122);
-    stringBuffer.append(capname);
     stringBuffer.append(TEXT_123);
-        } // ifA 
+    stringBuffer.append(capname);
     stringBuffer.append(TEXT_124);
-     } //for loop 
+        } // ifA 
     stringBuffer.append(TEXT_125);
-     importStringBuffer.insert(importInsertionPoint,  impu.computeSortedImports());
+     } //for loop 
     stringBuffer.append(TEXT_126);
+     importStringBuffer.insert(importInsertionPoint,  impu.computeSortedImports());
+    stringBuffer.append(TEXT_127);
     return stringBuffer.toString();
   }
 }

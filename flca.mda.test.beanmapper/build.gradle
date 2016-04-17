@@ -5,19 +5,6 @@ defaultTasks 'standard'
 
 archivesBaseName = "easymda.test.model.beanmapper"
 
-sourceSets {
-   main {
-      java {
-         srcDirs = ["src/main/java"]
-      }
-   }
-
-   javadoc {
-      java {
-         srcDirs = ["src/main/java" ]
-      }
-   }
-}
 buildDir = "target"
 
 dependencies {
@@ -27,6 +14,7 @@ dependencies {
 		"junit:junit:4.9",
 		"easymda:flca.mda.common.api:${easymda_version}",
 		"easymda:flca.easymda.generator:${easymda_version}",
+		"flca.utils:junit-xlsx-loader6:1.0",
 		"easymda:easymda.cartridge.beanmapper:${easymda_version}",
 		"eclipse-plugin:org.eclipse.jdt.core:4.0",
 		"eclipse-plugin:org.eclipse.core.resources:4.0",

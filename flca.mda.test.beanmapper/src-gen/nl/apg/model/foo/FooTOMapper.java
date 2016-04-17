@@ -60,8 +60,10 @@ public class FooTOMapper {
 	}
  
 	private static void mapFromBar(final Foo entity, final FooTO result) {
-		result.setBar(BarTOMapper.mapFromEntity(entity.getBar()));
-		result.getBar().setFoo(result);
+		if (entity.getBar() != null) {
+			result.setBar(BarTOMapper.mapFromEntity(entity.getBar()));
+			result.getBar().setFoo(result);
+		}
 	}
  
 	private static void mapFromBass(final Foo entity, final FooTO result) {
@@ -114,9 +116,10 @@ public class FooTOMapper {
 	}
  
 	private static void mapToBar(final FooTO entity, final Foo result) {
-
-		result.setBar(BarTOMapper.mapToEntity(entity.getBar()));
-		result.getBar().setFoo(result);			
+		if (entity.getBar() != null) {
+			result.setBar(BarTOMapper.mapToEntity(entity.getBar()));
+			result.getBar().setFoo(result);
+		}			
 	}
  
 	private static void mapToBass(final FooTO entity, final Foo result) {
