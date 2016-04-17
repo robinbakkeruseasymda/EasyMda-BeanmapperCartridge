@@ -10,25 +10,29 @@ import flca.test.base.AbstractTestTemplatesData;
 
 public class BeanMapperData extends AbstractTestTemplatesData 
 {
-	private static final String PLUGIN_DIR = "flca.mda.generator";
-	private static final String MODEL_DIR = "flca.mda.cartridge.beanmapper";
-	private static final String CARTRIDGE_DIR = "flca.mda.cartridge.beanmapper";
+	private static final String PLUGIN_DIR = "EasyMda-CoreGenerator/flca.mda.generator";
+	private static final String MODEL_DIR = "flca.mda.test.beanmapper";
+	private static final String CARTRIDGE_DIR = "EasyMda-BeanmapperCartridge/flca.mda.cartridge.beanmapper";
 
 	@Override
 	public File getPluginDir() {
-		return new File(getProjectDir() + "/" + PLUGIN_DIR);
+		return new File(currentDir().getParentFile().getParent() + "/" + PLUGIN_DIR);
 	}
 
 	@Override
 	public File getModelDir() {
-		return new File(getProjectDir() + "/" + MODEL_DIR);
+		return new File(currentDir().getParent() + "/" + MODEL_DIR);
 	}
 
 	@Override
 	public File getTemplateDir() {
-		return new File(getProjectDir() + "/" + CARTRIDGE_DIR);
+		return new File(currentDir().getParentFile().getParent() + "/" + CARTRIDGE_DIR);
 	}
 
+	protected File currentDir() {
+		String currentDir = System.getProperty("user.dir");
+		return new File(currentDir);
+	}
 	
 //	@Override
 //	public List<ITemplate> getAllTemplates() {

@@ -1,5 +1,7 @@
 
-apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+apply from: "../common.gradle"
+
+defaultTasks 'standard'
 
 archivesBaseName = "easymda.test.model.beanmapper"
 
@@ -20,7 +22,8 @@ buildDir = "target"
 
 dependencies {
 	compile "commons-lang:commons-lang:2.6",
-		"org.slf4j:slf4j-api:1.7.6",
+		"org.slf4j:slf4j-api:1.7.7",
+		"ch.qos.logback:logback-classic:1.1.3",
 		"junit:junit:4.9",
 		"easymda:flca.mda.common.api:${easymda_version}",
 		"easymda:flca.easymda.generator:${easymda_version}",
@@ -28,10 +31,9 @@ dependencies {
 		"eclipse-plugin:org.eclipse.jdt.core:4.0",
 		"eclipse-plugin:org.eclipse.core.resources:4.0",
 		"eclipse-plugin:org.eclipse.equinox.common:4.0",
+		"eclipse-plugin:org.eclipse.emf.common:4.0",
 		"eclipse-plugin:org.eclipse.core.jobs:4.0"
 }	
 
-task s(dependsOn: [standard] ) << {
-}
 
 

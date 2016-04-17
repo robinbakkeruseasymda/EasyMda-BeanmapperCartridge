@@ -1,5 +1,7 @@
 
-apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+apply from: "../common.gradle"
+
+defaultTasks 'standard'
 
 archivesBaseName = "easymda.cartridge.beanmapper"
 
@@ -19,6 +21,4 @@ dependencies {
 		"easymda:flca.mda.common.api:${easymda_version}"
 }	
 
-task s(dependsOn: [standard] ) << {
-}
 
