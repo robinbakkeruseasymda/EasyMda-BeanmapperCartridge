@@ -31,15 +31,8 @@ public class <%=classname%> extends AbstractTestBeanMapper {
 	*/
 	@Test 
 	public void makeExcelTemplates() {
-<% String entitynames = "";  String tonames = ""; %>
-<% for (NestedObject no : tu.getNestedObjects(entityClass).getNestedObjects()) { %>
-<%	entitynames += no.getNestedType().getSimpleName() + ","; %>
-<% } %>
-<% for (NestedObject no : tu.getNestedObjects(cc).getNestedObjects()) { %>
-<%	tonames += no.getNestedType().getSimpleName() + ","; %>
-<% } %>
-		XlsxDataWriter.writeXlsxFile("/tmp/<%=entityClassname%>.xlsx", <%=entitynames%>);
-		XlsxDataWriter.writeXlsxFile("/tmp/<%=toClassname%>.xlsx", <%=tonames%>);
+		XlsxDataWriter.writeAllXlsxFile("/tmp/<%=entityClassname%>.xlsx", <%=entityClassname%>.class);
+		XlsxDataWriter.writeAllXlsxFile("/tmp/<%=toClassname%>.xlsx", <%=toClassname%>.class);
 	}
 		
 	@Override
@@ -54,21 +47,29 @@ public class <%=classname%> extends AbstractTestBeanMapper {
 		return result;
 	}
 
+
 	@Test
 	public void testMapToEntity() {
-		<%=entityClassname%> <%=entityUncapname%>1 =(<%=entityClassname%>) populate(<%=entityClassname%>.class);
-		<%=toClassname%> <%=toUncapname%> = <%=mapper%>.mapFromEntity(<%=entityUncapname%>1);
-		<%=entityClassname%> <%=entityUncapname%>2 = <%=mapper%>.mapToEntity(<%=toUncapname%>);
-		testEquals(<%=entityUncapname%>1, <%=entityUncapname%>2, ignoreMapToEntityProperties());
+		Xlsx xls = new Xlsx("/<%=entityClassname%>.xlsx");
+		for (Integer nr : xls.getAllNrs(<%=entityClassname%>.class, SHEET1)) {
+			<%=entityClassname%> <%=entityUncapname%>1 = (<%=entityClassname%>) xls.make(<%=entityClassname%>.class, SHEET1, nr);
+			<%=toClassname%> <%=toUncapname%> = <%=mapper%>.mapFromEntity(<%=entityUncapname%>1);
+			<%=entityClassname%> <%=entityUncapname%>2 = <%=mapper%>.mapToEntity(<%=toUncapname%>);
+			testEquals(<%=entityUncapname%>1, <%=entityUncapname%>2, ignoreMapToEntityProperties());
+		}
 	}
 
 	@Test
 	public void testMapFromEntity() {
-		<%=toClassname%> <%=toUncapname%>1 =(<%=toClassname%>) populate(<%=toClassname%>.class);
-		<%=entityClassname%> <%=entityUncapname%>1 = <%=mapper%>.mapToEntity(<%=toUncapname%>1);
-		<%=toClassname%> <%=toUncapname%>2 = <%=mapper%>.mapFromEntity(<%=entityUncapname%>1);
-		testEquals(<%=toUncapname%>1, <%=toUncapname%>2, ignoreMapFromEntityProperties());
+		Xlsx xls = new Xlsx("/<%=toClassname%>.xlsx");
+		for (Integer nr : xls.getAllNrs(<%=toClassname%>.class, SHEET1)) {
+			<%=toClassname%> <%=toUncapname%>1 = (<%=toClassname%>) xls.make(<%=toClassname%>.class, SHEET1, nr);
+			<%=entityClassname%> <%=entityUncapname%>1 = <%=mapper%>.mapToEntity(<%=toUncapname%>1);
+			<%=toClassname%> <%=toUncapname%>2 = <%=mapper%>.mapFromEntity(<%=entityUncapname%>1);
+			testEquals(<%=toUncapname%>1, <%=toUncapname%>2, ignoreMapFromEntityProperties());
+		}
 	}
+
 	
 }
 <% importStringBuffer.insert(importInsertionPoint,  impu.computeSortedImports());%>
