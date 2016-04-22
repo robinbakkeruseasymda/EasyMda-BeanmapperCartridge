@@ -3,7 +3,7 @@ apply from: "../common.gradle"
 
 defaultTasks 'standard'
 
-archivesBaseName = "easymda.cartridge.beanmapper"
+archivesBaseName = "flca.mda.cartridge.beanmapper"
 
 sourceSets {
    main {
